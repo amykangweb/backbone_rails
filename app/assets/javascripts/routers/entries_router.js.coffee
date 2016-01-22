@@ -1,6 +1,15 @@
 class BackboneRails.Routers.Entries extends Backbone.Router
   routes:
     '': 'index'
+    'entries/:id': 'show'
 
-    index: ->
-      alert "home page"
+  initialize: ->
+    @collection = new BackboneRails.Collections.Entries()
+    @collection.fetch(reset: true)
+
+  index: ->
+    view = new BackboneRails.Views.EntriesIndex(collection: @collection)
+    $("#container").html(view.render().el)
+
+  show: (id) ->
+    alert "Entry #{id}"

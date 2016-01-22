@@ -3,7 +3,9 @@ window.BackboneRails =
   Collections: {}
   Views: {}
   Routers: {}
-  initialize: -> alert 'Hello from Backbone!'
+  initialize: ->
+    new BackboneRails.Routers.Entries()
+    Backbone.history.start()
 
 $(document).ready ->
   BackboneRails.initialize()
